@@ -78,9 +78,14 @@ for r in results[:4]:
     print(f'  • [{lvl.upper():<8}] {rule_id:<20}: {msg[:60]}...')
 "
 
+# Step 4: Anti-Flapping Statistical Evaluation
+echo ""
+echo ">>> [STAGE 4: Statistical Anti-Flapping Evaluation (k-of-n Pass Criteria)]..."
+python3 "$SCRIPT_DIR/anti_flap_gate.py"
+
 echo ""
 echo "================================================================================"
-echo " [LAB 07 COMPLETE] CI/CD SARIF gate successfully verified."
+echo " [LAB 07 COMPLETE] CI/CD SARIF gate & anti-flap controls verified."
 echo " Output files in: $OUT_DIR"
 ls -la "$OUT_DIR"/*.sarif
 echo "================================================================================"
