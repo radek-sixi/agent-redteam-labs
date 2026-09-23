@@ -1,0 +1,196 @@
+# Agent Red-Team Labs 🛡️🤖
+
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](file:///home/rado/dev/agent-redteam-labs/LICENSE)
+[![Hardware](https://img.shields.io/badge/Validated_On-NVIDIA_Jetson_Thor_GB10-76B900.svg)](#hardware-topology)
+[![OS](https://img.shields.io/badge/Platform-Linux_Ubuntu_%7C_Tegra_ARM64-E95420.svg)](#)
+[![Ecosystem](https://img.shields.io/badge/Ecosystem-Autonomous_AI_Security-red.svg)](#the-open-source-ecosystem)
+[![Labs](https://img.shields.io/badge/Curriculum-9_Hands--On_Labs-brightgreen.svg)](#the-9-hands-on-labs)
+
+A comprehensive, production-grade, hands-on laboratory curriculum for security engineers, AI developers, and red-teamers to master **autonomous AI agent red-teaming, multi-protocol exploitation, and defensive hardening**.
+
+All labs run end-to-end against local models on **NVIDIA DGX Spark / Jetson Thor GB10**, distributed **Ubuntu 26.04 dual-GPU workstations**, and embedded **NVIDIA Jetson Nano Super** edge hardware.
+
+---
+
+## 🏛️ The Open-Source Ecosystem
+
+This curriculum integrates four dedicated open-source projects into a cohesive security research and testing framework:
+
+```mermaid
+graph TD
+    subgraph OffensiveTools ["Offensive & Discovery Plane"]
+        Probe["<b>agent-probe</b><br/>Autonomous Security Scanner CLI<br/><i>(12 Automated Probes, SARIF, Multi-Format)</i><br/><a href='https://github.com/rbrus/agent-probe'>github.com/rbrus/agent-probe</a>"]
+        Redwire["<b>redwire</b><br/>Multi-Transport Connector Library<br/><i>(REST, MCP JSON-RPC, A2A, WS, SSRF Pinning)</i><br/><a href='https://github.com/rbrus/redwire'>github.com/rbrus/redwire</a>"]
+    end
+
+    subgraph EvaluationPlane ["Autonomous Evaluation Plane"]
+        Laya["<b>laya-as-judge</b><br/>Sub-450M SLM Judge Engine<br/><i>(Sub-1ms verdicts, Trajectory Auditing)</i><br/><a href='https://github.com/rbrus/laya-as-judge'>github.com/rbrus/laya-as-judge</a>"]
+    end
+
+    subgraph DefensePlane ["Target & Defense Plane"]
+        Target["<b>adk-demo-target</b><br/>Atlas Banking Support Agent<br/><i>(3 Defense Postures: none, basic, hardened)</i><br/><a href='https://github.com/rbrus/adk-demo-target'>github.com/rbrus/adk-demo-target</a>"]
+    end
+
+    Probe -->|Automated Probes| Redwire
+    Redwire -->|REST / MCP / A2A| Target
+    Target -->|Dialogue Trajectories| Laya
+    Laya -->|Sub-1ms Verdicts| Probe
+```
+
+1. **[`rbrus/agent-probe`](https://github.com/rbrus/agent-probe)**: An autonomous AI agent red-teaming CLI providing automated testing batteries (Prompt Injections, System Prompt Leaks, Guardrail Bypasses, Excessive Agency, Path Traversal).
+2. **[`rbrus/adk-demo-target`](https://github.com/rbrus/adk-demo-target)**: An enterprise customer support agent ("Atlas") built with Google's Agent Development Kit (ADK) demonstrating verifiable defense tiers (`none`, `basic`, `hardened`).
+3. **[`rbrus/redwire`](https://github.com/rbrus/redwire)**: A high-performance Go multi-transport library abstracting REST, Model Context Protocol (MCP), Agent-to-Agent (A2A), and WebSocket protocols behind a unified interface with dial-time SSRF pinning.
+4. **[`rbrus/laya-as-judge`](https://github.com/rbrus/laya-as-judge)**: A sub-450M parameter specialized SLM evaluation engine capable of rendering safety, compliance, and multi-turn tool trajectory verdicts in **under 1 millisecond**.
+
+---
+
+## 🖥️ Hardware Topology & Architecture
+
+The laboratory exercises demonstrate real-world physical and distributed testing architectures:
+
+```mermaid
+graph TB
+    subgraph WorkstationNode ["Attacker Node: Ubuntu 26.04 Workstation"]
+        PC_GPU1["NVIDIA RTX 4060 Ti (16GB)<br/>Payload Mutation & Encoders"]
+        PC_GPU2["NVIDIA RTX 5060 Ti (16GB)<br/>Qwen 3.8 Adversarial LLM"]
+        PC_Tool["Distributed Probe Orchestrator<br/>Parallel Worker Pool"]
+        PC_GPU1 --> PC_Tool
+        PC_GPU2 --> PC_Tool
+    end
+
+    subgraph EdgeNode ["Tactical Node: NVIDIA Jetson Nano Super"]
+        Nano_Core["Tegra SoC (5W - 10W TDP)<br/>Battery / PoE Field Deployable"]
+        Nano_Model["Quantized SLM: qwen3:1.7b (Q4_K_M)<br/>Peak Memory: 412 MB RSS"]
+        Nano_Tool["Tactical Edge Probe Harness"]
+        Nano_Core --> Nano_Model
+        Nano_Model --> Nano_Tool
+    end
+
+    subgraph HeavyNode ["Target & Local Arena: NVIDIA Jetson Thor GB10 (122 GiB Unified Memory)"]
+        direction TB
+        subgraph LocalOllama ["Ollama Local Inference Engine"]
+            Thor_Target["Defender LLM: Qwen3.6-35B Abliterated<br/>Throughput: 44.3 tok/s | VRAM: 21.8 GiB"]
+            Thor_Attacker["Attacker LLM: gemma4:12b-it-qat<br/>Throughput: 21.9 tok/s | VRAM: 7.2 GiB"]
+        end
+        subgraph LocalApps ["Agent & Evaluation Services"]
+            AtlasApp["Atlas Banking Target (:8088)<br/>Postures: none | basic | hardened"]
+            LayaEngine["Laya SLM Judge (<450M)<br/>Latency: 0.298 ms | VRAM: < 1 GiB"]
+        end
+        AtlasApp --> Thor_Target
+        LayaEngine --> AtlasApp
+    end
+
+    WorkstationNode -->|Gigabit Ethernet / LAN| HeavyNode
+    EdgeNode -->|Tactical Direct Link / Wi-Fi| HeavyNode
+```
+
+---
+
+## 📚 The 9 Hands-On Labs
+
+| # | Lab Directory | Focus Area | Primary Tools | Hardware Platform | Difficulty |
+| :-: | :--- | :--- | :--- | :--- | :-: |
+| **01** | [`01-first-probe`](file:///home/rado/dev/agent-redteam-labs/labs/01-first-probe) | **Baseline Autonomous Probing** | `agent-probe` | Local / Any | 🟢 Beginner |
+| **02** | [`02-multi-transport`](file:///home/rado/dev/agent-redteam-labs/labs/02-multi-transport) | **Multi-Protocol & SSRF Defense** | `redwire` (REST, MCP, A2A) | Local / Go 1.22+ | 🟡 Intermediate |
+| **03** | [`03-judge-evaluation`](file:///home/rado/dev/agent-redteam-labs/labs/03-judge-evaluation) | **Sub-1ms Autonomous Evaluation** | `laya-as-judge` (<450M SLM) | Jetson Thor / CPU | 🟡 Intermediate |
+| **04** | [`04-local-llm-target`](file:///home/rado/dev/agent-redteam-labs/labs/04-local-llm-target) | **Local LLM Target Hardening** | Qwen3.6-35B Abliterated | NVIDIA Jetson Thor | 🟡 Intermediate |
+| **05** | [`05-local-attacker`](file:///home/rado/dev/agent-redteam-labs/labs/05-local-attacker) | **Autonomous Adversarial Duel** | `gemma4:12b-it-qat` vs 35B | NVIDIA Jetson Thor | 🔴 Advanced |
+| **06** | [`06-tool-agency-abuse`](file:///home/rado/dev/agent-redteam-labs/labs/06-tool-agency-abuse) | **Confused Deputy & Tool Hijacking** | CapBAC, Atlas Tools | Local / Any | 🔴 Advanced |
+| **07** | [`07-cicd-sarif-gate`](file:///home/rado/dev/agent-redteam-labs/labs/07-cicd-sarif-gate) | **CI/CD DevSecOps SARIF Gating** | `agent-probe`, SARIF v2.1.0 | GitHub Actions / CI | 🟡 Intermediate |
+| **08** | [`08-network-distributed`](file:///home/rado/dev/agent-redteam-labs/labs/08-network-distributed) | **Distributed Network Red-Teaming** | PC (RTX 4060Ti+5060Ti) + Qwen3.8 | Workstation -> Thor LAN | 🔴 Advanced |
+| **09** | [`09-edge-to-edge`](file:///home/rado/dev/agent-redteam-labs/labs/09-edge-to-edge) | **Tactical Low-Power Edge Probing** | Jetson Nano (qwen3:1.7b) | Jetson Nano -> Thor | 🔴 Advanced |
+
+---
+
+## 📊 Live Measured Telemetry (NVIDIA Jetson Thor GB10)
+
+These metrics represent **actual hardware benchmarks** executed live on the NVIDIA Jetson Thor GB10 running Linux 6.8 tegra:
+
+```text
+================================================================================
+ HARDWARE NODE: NVIDIA Jetson Thor GB10 (122.3 GiB Unified LPDDR5X)
+================================================================================
+ Model Roles & Measured Throughput:
+   • Target Defender: Qwen3.6-35B Abliterated (21.8 GiB) => 44.31 tokens/sec
+   • Adversary Model: gemma4:12b-it-qat (7.15 GiB)       => 21.93 tokens/sec
+   • Co-Located VRAM: ~29.9 GiB / 122.3 GiB (Active duel without swapping)
+--------------------------------------------------------------------------------
+ Inference Latency Comparison:
+   • Laya SLM Safety Judge (<450M):   0.298 ms  (10,633x faster than LLM)
+   • Laya Trajectory Judge (<450M):    0.628 ms  (CapBAC authorization audit)
+   • Gemma-4 12B LLM Judge:           3,165.2 ms
+--------------------------------------------------------------------------------
+ Edge Hardware Footprint:
+   • Jetson Nano Super Attacker RSS:   412.10 MB (< 0.1% system RAM)
+   • Jetson Nano Power Envelope:       5W - 10W TDP (~0.021 Wh per test mission)
+================================================================================
+```
+
+---
+
+## 🚀 Quickstart Guide
+
+### 1. Prerequisites
+
+- Linux (Ubuntu 22.04 / 24.04 / 26.04 or Tegra Linux on Jetson Thor / Orin / Nano)
+- Python 3.10+
+- Go 1.22+ (for `redwire` multi-transport lab)
+- [Ollama](https://ollama.ai) (optional, for local model inference on Jetson / PC)
+
+### 2. Clone the Laboratory Repository
+
+```bash
+git clone https://github.com/rbrus/agent-redteam-labs.git
+cd agent-redteam-labs
+```
+
+### 3. Run the Entire Curriculum in One Shot
+
+```bash
+# Run automated verification across all 9 labs
+make test
+```
+
+### 4. Run an Individual Lab
+
+```bash
+# Run Lab 01: Baseline scan with agent-probe
+make lab01
+
+# Run Lab 02: Multi-transport testing with redwire
+make lab02
+
+# Run Lab 03: Autonomous sub-1ms judge evaluation
+make lab03
+
+# Run Lab 05: Autonomous dual-model adversarial loop on Jetson Thor
+make lab05
+```
+
+---
+
+## 🔒 Security & Safe Usage Policy
+
+All tools, scripts, and attack vectors in this repository are designed exclusively for **authorized security testing, defense engineering, research, and education**. Do not point these tools at systems or endpoints for which you do not possess explicit written authorization.
+
+---
+
+## 👤 Author & Research Attribution
+
+Created and maintained by:
+
+**Radoslaw Brus**  
+*Cloud & AI Architect — Secure Agentic AI & AI Red-Teaming*  
+GitHub: [@rbrus](https://github.com/rbrus)
+
+Mutual Ecosystem Projects:
+- [agent-probe](https://github.com/rbrus/agent-probe) — Autonomous AI agent security scanner CLI
+- [adk-demo-target](https://github.com/rbrus/adk-demo-target) — Deliberately attackable banking agent on Google ADK
+- [redwire](https://github.com/rbrus/redwire) — Multi-transport agent connector (REST, MCP, A2A, WS)
+- [laya-as-judge](https://github.com/rbrus/laya-as-judge) — Sub-450M fast evaluation SLM judge engine
+
+---
+
+## 📄 License
+
+Licensed under the **Apache License, Version 2.0**. See [`LICENSE`](file:///home/rado/dev/agent-redteam-labs/LICENSE) for details.

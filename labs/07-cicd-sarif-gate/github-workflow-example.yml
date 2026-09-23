@@ -1,0 +1,45 @@
+name: Agent Security Gate
+
+on:
+  pull_request:
+    branches: [main, master]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  agent-redteam-scan:
+    name: Autonomous Agent Security Probe
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Target Agent Environment
+        run: |
+          # Start agent under test in background
+          python3 app/agent.py &
+          sleep 5
+
+      - name: Download & Install agent-probe
+        run: |
+          curl -sSL -o /usr/local/bin/agent-probe https://github.com/rbrus/agent-probe/releases/latest/download/agent-probe-linux-amd64
+          chmod +x /usr/local/bin/agent-probe
+
+      - name: Execute Security Scan & Generate SARIF
+        run: |
+          agent-probe scan \
+            --target http://127.0.0.1:8080/chat \
+            --format sarif \
+            --output agent-security-results.sarif \
+            --fail-on critical
+
+      - name: Upload SARIF Report to GitHub Advanced Security
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: agent-security-results.sarif
+          category: agent-probe-scanner
