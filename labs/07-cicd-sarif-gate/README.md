@@ -1,6 +1,6 @@
 # Lab 07 — CI/CD DevSecOps Gating, SARIF v2.1.0 & Anti-Flapping Statistical Gating
 
-[![Lab](https://img.shields.io/badge/Lab-07-blue.svg)](file:///home/rado/dev/agent-redteam-labs/labs/07-cicd-sarif-gate)
+[![Lab](https://img.shields.io/badge/Lab-07-blue.svg)](.)
 [![Standard](https://img.shields.io/badge/OASIS-SARIF%20v2.1.0-blue.svg)](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html)
 [![Strategy](https://img.shields.io/badge/Anti--Flap-k--of--n%20Statistical%20Gating-purple.svg)](#preventing-ci-flapping-in-llm-security-pipelines)
 [![Integration](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-2088FF.svg)](#)
@@ -63,7 +63,7 @@ Marginal ambiguous outputs ($0.4 < p < 0.7$) are prevented from flapping product
 
 ### Step 1: Run the Statistical Anti-Flap Gate
 
-Execute [`anti_flap_gate.py`](file:///home/rado/dev/agent-redteam-labs/labs/07-cicd-sarif-gate/anti_flap_gate.py):
+Execute [`anti_flap_gate.py`](./anti_flap_gate.py):
 
 ```bash
 python3 anti_flap_gate.py

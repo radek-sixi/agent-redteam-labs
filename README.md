@@ -1,6 +1,6 @@
 # Agent Red-Team Labs 🛡️🤖
 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](file:///home/rado/dev/agent-redteam-labs/LICENSE)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Hardware](https://img.shields.io/badge/Validated_On-NVIDIA_Jetson_Thor_GB10-76B900.svg)](#hardware-topology)
 [![OS](https://img.shields.io/badge/Platform-Linux_Ubuntu_%7C_Tegra_ARM64-E95420.svg)](#)
 [![Ecosystem](https://img.shields.io/badge/Ecosystem-Autonomous_AI_Security-red.svg)](#the-open-source-ecosystem)
@@ -90,15 +90,15 @@ graph TB
 
 | # | Lab Directory | Focus Area | Primary Tools | Hardware Platform | Difficulty |
 | :-: | :--- | :--- | :--- | :--- | :-: |
-| **01** | [`01-first-probe`](file:///home/rado/dev/agent-redteam-labs/labs/01-first-probe) | **Baseline Autonomous Probing** | `agent-probe` | Local / Any | 🟢 Beginner |
-| **02** | [`02-multi-transport`](file:///home/rado/dev/agent-redteam-labs/labs/02-multi-transport) | **Multi-Protocol & SSRF Defense** | `redwire` (REST, MCP, A2A) | Local / Go 1.22+ | 🟡 Intermediate |
-| **03** | [`03-judge-evaluation`](file:///home/rado/dev/agent-redteam-labs/labs/03-judge-evaluation) | **Sub-1ms Autonomous Evaluation** | `laya-as-judge` (<450M SLM) | Jetson Thor / CPU | 🟡 Intermediate |
-| **04** | [`04-local-llm-target`](file:///home/rado/dev/agent-redteam-labs/labs/04-local-llm-target) | **Local LLM Target Hardening** | Qwen3.6-35B Abliterated | NVIDIA Jetson Thor | 🟡 Intermediate |
-| **05** | [`05-local-attacker`](file:///home/rado/dev/agent-redteam-labs/labs/05-local-attacker) | **Autonomous Adversarial Duel** | `gemma4:12b-it-qat` vs 35B | NVIDIA Jetson Thor | 🔴 Advanced |
-| **06** | [`06-tool-agency-abuse`](file:///home/rado/dev/agent-redteam-labs/labs/06-tool-agency-abuse) | **Confused Deputy & Tool Hijacking** | CapBAC, Atlas Tools | Local / Any | 🔴 Advanced |
-| **07** | [`07-cicd-sarif-gate`](file:///home/rado/dev/agent-redteam-labs/labs/07-cicd-sarif-gate) | **CI/CD DevSecOps SARIF Gating** | `agent-probe`, SARIF v2.1.0 | GitHub Actions / CI | 🟡 Intermediate |
-| **08** | [`08-network-distributed`](file:///home/rado/dev/agent-redteam-labs/labs/08-network-distributed) | **Distributed Network Red-Teaming** | PC (RTX 4060Ti+5060Ti) + Qwen3.8 | Workstation -> Thor LAN | 🔴 Advanced |
-| **09** | [`09-edge-to-edge`](file:///home/rado/dev/agent-redteam-labs/labs/09-edge-to-edge) | **Tactical Low-Power Edge Probing** | Jetson Nano (qwen3:1.7b) | Jetson Nano -> Thor | 🔴 Advanced |
+| **01** | [`01-first-probe`](labs/01-first-probe) | **Baseline Autonomous Probing** | `agent-probe` | Local / Any | 🟢 Beginner |
+| **02** | [`02-multi-transport`](labs/02-multi-transport) | **Multi-Protocol & SSRF Defense** | `redwire` (REST, MCP, A2A) | Local / Go 1.22+ | 🟡 Intermediate |
+| **03** | [`03-judge-evaluation`](labs/03-judge-evaluation) | **Sub-1ms Autonomous Evaluation** | `laya-as-judge` (<450M SLM) | Jetson Thor / CPU | 🟡 Intermediate |
+| **04** | [`04-local-llm-target`](labs/04-local-llm-target) | **Local LLM Target Hardening** | Qwen3.6-35B Abliterated | NVIDIA Jetson Thor | 🟡 Intermediate |
+| **05** | [`05-local-attacker`](labs/05-local-attacker) | **Autonomous Adversarial Duel** | `gemma4:12b-it-qat` vs 35B | NVIDIA Jetson Thor | 🔴 Advanced |
+| **06** | [`06-tool-agency-abuse`](labs/06-tool-agency-abuse) | **Confused Deputy & Tool Hijacking** | CapBAC, Atlas Tools | Local / Any | 🔴 Advanced |
+| **07** | [`07-cicd-sarif-gate`](labs/07-cicd-sarif-gate) | **CI/CD DevSecOps SARIF Gating** | `agent-probe`, SARIF v2.1.0 | GitHub Actions / CI | 🟡 Intermediate |
+| **08** | [`08-network-distributed`](labs/08-network-distributed) | **Distributed Network Red-Teaming** | PC (RTX 4060Ti+5060Ti) + Qwen3.8 | Workstation -> Thor LAN | 🔴 Advanced |
+| **09** | [`09-edge-to-edge`](labs/09-edge-to-edge) | **Tactical Low-Power Edge Probing** | Jetson Nano (qwen3:1.7b) | Jetson Nano -> Thor | 🔴 Advanced |
 
 ---
 
@@ -193,4 +193,4 @@ Mutual Ecosystem Projects:
 
 ## 📄 License
 
-Licensed under the **Apache License, Version 2.0**. See [`LICENSE`](file:///home/rado/dev/agent-redteam-labs/LICENSE) for details.
+Licensed under the **Apache License, Version 2.0**. See [`LICENSE`](LICENSE) for details.

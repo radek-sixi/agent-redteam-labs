@@ -1,6 +1,6 @@
 # Lab 06 — Excessive Agency & Tool Hijacking: The Confused Deputy Problem
 
-[![Lab](https://img.shields.io/badge/Lab-06-blue.svg)](file:///home/rado/dev/agent-redteam-labs/labs/06-tool-agency-abuse)
+[![Lab](https://img.shields.io/badge/Lab-06-blue.svg)](.)
 [![OWASP Top 10](https://img.shields.io/badge/OWASP-LLM06%20Excessive%20Agency-red.svg)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 [![Level](https://img.shields.io/badge/Difficulty-Advanced-red.svg)](#)
 
@@ -43,7 +43,7 @@ sequenceDiagram
 
 ### Step 1: Analyze the Exploits
 
-Open [`tool_hijack_test.py`](file:///home/rado/dev/agent-redteam-labs/labs/06-tool-agency-abuse/tool_hijack_test.py). It tests three realistic attack vectors:
+Open [`tool_hijack_test.py`](./tool_hijack_test.py). It tests three realistic attack vectors:
 1. **Confused Deputy Escalation**: The user convinces the agent to use its internal escalation code.
 2. **Executive Emergency Override**: Using social engineering / roleplay to trigger privileged administrative paths.
 3. **Indirect Financial Transfer**: Passing wire transfer parameters without human approval gates.

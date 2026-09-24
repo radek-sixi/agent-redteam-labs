@@ -1,6 +1,6 @@
 # Lab 09 — Edge-to-Edge Tactical Red-Teaming: Jetson Nano Super -> Jetson Thor
 
-[![Lab](https://img.shields.io/badge/Lab-09-blue.svg)](file:///home/rado/dev/agent-redteam-labs/labs/09-edge-to-edge)
+[![Lab](https://img.shields.io/badge/Lab-09-blue.svg)](.)
 [![Edge Device](https://img.shields.io/badge/Hardware-NVIDIA_Jetson_Nano_Super-76B900.svg)](#)
 [![Attacker Model](https://img.shields.io/badge/Edge_SLM-qwen3%3A1.7b_%28Q4__K__M%29-purple.svg)](#)
 [![Power Budget](https://img.shields.io/badge/Power-5W--10W_TDP-green.svg)](#)
@@ -61,7 +61,7 @@ graph LR
 
 ### Step 1: Examine the Edge Probe Harness
 
-Open [`nano_edge_probe.py`](file:///home/rado/dev/agent-redteam-labs/labs/09-edge-to-edge/nano_edge_probe.py). Notice how:
+Open [`nano_edge_probe.py`](./nano_edge_probe.py). Notice how:
 - Memory usage is actively profiled using `resource.getrusage` to stay below embedded limits.
 - Payloads are short and direct to minimize token generation latency on low-wattage compute cores.
 - Energy consumption is estimated per mission to evaluate battery life during field deployment.

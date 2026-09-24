@@ -1,6 +1,6 @@
 # Lab 02 — Multi-Protocol Red-Teaming: REST, MCP, A2A & SSRF Defense
 
-[![Lab](https://img.shields.io/badge/Lab-02-blue.svg)](file:///home/rado/dev/agent-redteam-labs/labs/02-multi-transport)
+[![Lab](https://img.shields.io/badge/Lab-02-blue.svg)](.)
 [![Transport Engine](https://img.shields.io/badge/Engine-redwire-purple.svg)](https://github.com/rbrus/redwire)
 [![Level](https://img.shields.io/badge/Difficulty-Intermediate-yellow.svg)](#)
 
@@ -64,7 +64,7 @@ When building an autonomous red-teaming scanner, target URLs are often user-supp
 
 ### Step 1: Examine the Code
 
-Open [`main.go`](file:///home/rado/dev/agent-redteam-labs/labs/02-multi-transport/main.go). Notice how a single target map accepts disparate protocols:
+Open [`main.go`](./main.go). Notice how a single target map accepts disparate protocols:
 
 ```go
 targets := map[string]redwire.Target{

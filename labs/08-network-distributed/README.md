@@ -1,6 +1,6 @@
 # Lab 08 — Distributed Network Red-Teaming: Workstation PC -> Jetson Thor
 
-[![Lab](https://img.shields.io/badge/Lab-08-blue.svg)](file:///home/rado/dev/agent-redteam-labs/labs/08-network-distributed)
+[![Lab](https://img.shields.io/badge/Lab-08-blue.svg)](.)
 [![Attacker Node](https://img.shields.io/badge/Attacker_Rig-Ubuntu_26.04_%7C_Dual_RTX_4060Ti%2B5060Ti-76B900.svg)](#)
 [![Target Node](https://img.shields.io/badge/Target_Node-Jetson_Thor_GB10-blue.svg)](#)
 [![Network](https://img.shields.io/badge/Topology-Multi--Node_LAN-orange.svg)](#)

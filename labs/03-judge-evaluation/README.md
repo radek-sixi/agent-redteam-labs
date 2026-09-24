@@ -1,6 +1,6 @@
 # Lab 03 — Autonomous Judge Evaluation: SLM vs LLM vs Heuristics
 
-[![Lab](https://img.shields.io/badge/Lab-03-blue.svg)](file:///home/rado/dev/agent-redteam-labs/labs/03-judge-evaluation)
+[![Lab](https://img.shields.io/badge/Lab-03-blue.svg)](.)
 [![Judge Engine](https://img.shields.io/badge/Engine-laya--as--judge-green.svg)](https://github.com/rbrus/laya-as-judge)
 [![Hardware](https://img.shields.io/badge/Hardware-NVIDIA_Jetson_Thor-76B900.svg)](#)
 [![Level](https://img.shields.io/badge/Difficulty-Intermediate-yellow.svg)](#)
@@ -54,7 +54,7 @@ Measured directly during real execution on Jetson Thor GB10 (122 GiB unified mem
 
 ### Step 1: Examine the Evaluator
 
-Open [`evaluate_probes.py`](file:///home/rado/dev/agent-redteam-labs/labs/03-judge-evaluation/evaluate_probes.py). It invokes:
+Open [`evaluate_probes.py`](./evaluate_probes.py). It invokes:
 1. `SafetyGuardJudge`: Evaluates prompt injection, jailbreak intent, and harm severity.
 2. `AgentTrajectoryJudge`: Audits agent tool invocations (e.g. detecting unauthorized financial wire transfers or ticket escalations).
 3. `Ollama LLM Judge`: Measures latency against a full 12B parameter model.

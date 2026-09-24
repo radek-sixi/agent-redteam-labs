@@ -1,6 +1,6 @@
 # Lab 01 — First Autonomous Probe: Baseline Security Testing
 
-[![Lab](https://img.shields.io/badge/Lab-01-blue.svg)](file:///home/rado/dev/agent-redteam-labs/labs/01-first-probe)
+[![Lab](https://img.shields.io/badge/Lab-01-blue.svg)](.)
 [![Target](https://img.shields.io/badge/Target-adk--demo--target-orange.svg)](https://github.com/rbrus/adk-demo-target)
 [![Tool](https://img.shields.io/badge/Scanner-agent--probe-red.svg)](https://github.com/rbrus/agent-probe)
 [![Level](https://img.shields.io/badge/Difficulty-Beginner-green.svg)](#)

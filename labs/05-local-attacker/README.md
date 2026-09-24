@@ -1,6 +1,6 @@
 # Lab 05 — Local Adversarial Attacker Loop on NVIDIA Jetson Thor
 
-[![Lab](https://img.shields.io/badge/Lab-05-blue.svg)](file:///home/rado/dev/agent-redteam-labs/labs/05-local-attacker)
+[![Lab](https://img.shields.io/badge/Lab-05-blue.svg)](.)
 [![Attacker](https://img.shields.io/badge/Attacker-gemma4:12b--it--qat-red.svg)](#)
 [![Defender](https://img.shields.io/badge/Defender-Qwen3.6--35B--abliterated-blue.svg)](#)
 [![Judge](https://img.shields.io/badge/Judge-laya--as--judge-green.svg)](https://github.com/rbrus/laya-as-judge)
@@ -62,7 +62,7 @@ On **NVIDIA Jetson Thor GB10 / DGX Spark**:
 
 ### Step 1: Review the Adversarial Agent Logic
 
-Open [`autonomous_attacker.py`](file:///home/rado/dev/agent-redteam-labs/labs/05-local-attacker/autonomous_attacker.py). The attacker LLM is guided by system instructions that enforce non-detection, dynamic evasion techniques, and iterative refinement based on prior turn feedback.
+Open [`autonomous_attacker.py`](./autonomous_attacker.py). The attacker LLM is guided by system instructions that enforce non-detection, dynamic evasion techniques, and iterative refinement based on prior turn feedback.
 
 ### Step 2: Run the Live Duel
 

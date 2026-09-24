@@ -1,6 +1,6 @@
 # Lab 04 — Local LLM Target Hardening on NVIDIA Jetson Thor
 
-[![Lab](https://img.shields.io/badge/Lab-04-blue.svg)](file:///home/rado/dev/agent-redteam-labs/labs/04-local-llm-target)
+[![Lab](https://img.shields.io/badge/Lab-04-blue.svg)](.)
 [![Target LLM](https://img.shields.io/badge/Model-Qwen3.6--35B--abliterated-orange.svg)](#)
 [![Hardware](https://img.shields.io/badge/Hardware-NVIDIA_Jetson_Thor_GB10-76B900.svg)](#)
 [![Level](https://img.shields.io/badge/Difficulty-Intermediate-yellow.svg)](#)
