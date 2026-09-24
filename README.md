@@ -4,11 +4,11 @@
 [![Hardware](https://img.shields.io/badge/Validated_On-NVIDIA_Jetson_Thor_GB10-76B900.svg)](#hardware-topology)
 [![OS](https://img.shields.io/badge/Platform-Linux_Ubuntu_%7C_Tegra_ARM64-E95420.svg)](#)
 [![Ecosystem](https://img.shields.io/badge/Ecosystem-Autonomous_AI_Security-red.svg)](#the-open-source-ecosystem)
-[![Labs](https://img.shields.io/badge/Curriculum-9_Hands--On_Labs-brightgreen.svg)](#the-9-hands-on-labs)
+[![Labs](https://img.shields.io/badge/Curriculum-10_Hands--On_Labs-brightgreen.svg)](#the-hands-on-labs)
 
-A comprehensive, production-grade, hands-on laboratory curriculum for security engineers, AI developers, and red-teamers to master **autonomous AI agent red-teaming, multi-protocol exploitation, and defensive hardening**.
+A hands-on laboratory curriculum for security engineers, AI developers, and red-teamers learning **autonomous AI agent red-teaming, multi-protocol testing, and defensive hardening**. It is a teaching curriculum and a starting point for your own harnesses — not a certified or exhaustive assurance suite. See [Scope & limitations](#-scope--limitations) before you rely on a result.
 
-All labs run end-to-end against local models on **NVIDIA DGX Spark / Jetson Thor GB10**, distributed **Ubuntu 26.04 dual-GPU workstations**, and embedded **NVIDIA Jetson Nano Super** edge hardware.
+The labs run against local models on **NVIDIA Jetson Thor GB10**, **Ubuntu dual-GPU workstations**, and **NVIDIA Jetson Nano Super** edge hardware, and against a real Google ADK agent for the tool-abuse labs.
 
 ---
 
@@ -86,7 +86,8 @@ graph TB
 
 ---
 
-## 📚 The 9 Hands-On Labs
+<a id="the-hands-on-labs"></a>
+## 📚 The Hands-On Labs
 
 | # | Lab Directory | Focus Area | Primary Tools | Hardware Platform | Difficulty |
 | :-: | :--- | :--- | :--- | :--- | :-: |
@@ -95,16 +96,39 @@ graph TB
 | **03** | [`03-judge-evaluation`](labs/03-judge-evaluation) | **Sub-1ms Autonomous Evaluation** | `laya-as-judge` (<450M SLM) | Jetson Thor / CPU | 🟡 Intermediate |
 | **04** | [`04-local-llm-target`](labs/04-local-llm-target) | **Local LLM Target Hardening** | Qwen3.6-35B Abliterated | NVIDIA Jetson Thor | 🟡 Intermediate |
 | **05** | [`05-local-attacker`](labs/05-local-attacker) | **Autonomous Adversarial Duel** | `gemma4:12b-it-qat` vs 35B | NVIDIA Jetson Thor | 🔴 Advanced |
-| **06** | [`06-tool-agency-abuse`](labs/06-tool-agency-abuse) | **Confused Deputy & Tool Hijacking** | CapBAC, Atlas Tools | Local / Any | 🔴 Advanced |
+| **06** | [`06-tool-agency-abuse`](labs/06-tool-agency-abuse) | **Confused Deputy & Tool Hijacking (real ADK agent)** | Atlas ADK agent, session-state ground truth | ADK + Vertex AI | 🔴 Advanced |
 | **07** | [`07-cicd-sarif-gate`](labs/07-cicd-sarif-gate) | **CI/CD DevSecOps SARIF Gating** | `agent-probe`, SARIF v2.1.0 | GitHub Actions / CI | 🟡 Intermediate |
 | **08** | [`08-network-distributed`](labs/08-network-distributed) | **Distributed Network Red-Teaming** | PC (RTX 4060Ti+5060Ti) + Qwen3.8 | Workstation -> Thor LAN | 🔴 Advanced |
 | **09** | [`09-edge-to-edge`](labs/09-edge-to-edge) | **Tactical Low-Power Edge Probing** | Jetson Nano (qwen3:1.7b) | Jetson Nano -> Thor | 🔴 Advanced |
+| **10** | [`10-refusal-persistence`](labs/10-refusal-persistence) | **Refusal Persistence ("didn't accept no")** | Atlas ADK agent, multi-turn, session-state ground truth | ADK + Vertex AI | 🔴 Advanced |
 
 ---
 
+## ⚠️ Scope & limitations
+
+Read this before quoting a result to anyone.
+
+- **This is a teaching curriculum, not an assurance product.** It shows real failure modes and
+  how to test for them. It does not certify that any agent is safe, and passing every lab does
+  not mean an agent is secure.
+- **`agent-probe` is a fast baseline, not a coverage guarantee.** Its 12 built-in probes are
+  single-turn and heuristic. They map to the OWASP LLM Top 10 by category, but a "defended"
+  result means only that these specific probes did not elicit a signature — it is a smoke test
+  and a CI gate, not a penetration test. It uses a benign negative control and word-boundary
+  matching to cut false positives, but heuristic detection still produces both false positives
+  and false negatives; confirm findings by hand.
+- **Labs 06 and 10 need a real ADK agent and model credentials.** They drive the
+  `adk-demo-target` agent and read its session state for ground truth. Without `google-adk` and
+  Vertex AI credentials they abort with a non-zero exit code — by design, they never simulate a
+  result. LLM outputs vary between runs; treat single runs as indicative, not definitive.
+- **The telemetry figures below are from one operator's hardware.** They illustrate feasibility
+  and rough cost, not a benchmark you should expect to reproduce exactly.
+- **Authorization is yours to hold.** Everything here is for systems you own or are authorized
+  in writing to test.
+
 ## 📊 Live Measured Telemetry (NVIDIA Jetson Thor GB10)
 
-These metrics represent **actual hardware benchmarks** executed live on the NVIDIA Jetson Thor GB10 running Linux 6.8 tegra:
+These are measurements from **one operator's** NVIDIA Jetson Thor GB10 running Linux 6.8 tegra. They illustrate feasibility and rough cost on this hardware; they are not a portable benchmark and your numbers will differ. See [Scope & limitations](#-scope--limitations).
 
 ```text
 ================================================================================
