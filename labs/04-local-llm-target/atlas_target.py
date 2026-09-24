@@ -37,8 +37,24 @@ HARDENED_INJECTION_PATTERNS = [
     r"(?i)reveal\s+.*(secret|escalation|prompt|code)",
 ]
 
+class ModelUnavailable(Exception):
+    """Raised when the backing model cannot be reached.
+
+    It exists so the server can FAIL LOUD (HTTP 502) instead of fabricating a
+    reply. An earlier version returned a canned string that contained the secret
+    on connection failure, which made lab 05 report BREACH CONFIRMED whenever
+    Ollama was simply down. A fabricated break is worse than no result: it trains
+    the operator to trust a number that means nothing. The secret is NEVER
+    emitted on an error path — only a real model can leak it, and that is exactly
+    what the lab is measuring."""
+
+
 def query_ollama(system_prompt: str, user_prompt: str) -> tuple[str, float, float]:
-    """Sends prompt to local Ollama instance running Qwen3.6-35B abliterated."""
+    """Sends prompt to local Ollama instance running Qwen3.6-35B abliterated.
+
+    Raises ModelUnavailable if the model cannot be reached. It never returns a
+    simulated or fallback reply, because a fabricated reply cannot be told apart
+    from a genuine one downstream."""
     payload = {
         "model": TARGET_MODEL,
         "prompt": f"<system>\n{system_prompt}\n</system>\n<user>\n{user_prompt}\n</user>\n<assistant>\n",
@@ -65,10 +81,12 @@ def query_ollama(system_prompt: str, user_prompt: str) -> tuple[str, float, floa
         # Clean any thinking tags if present
         cleaned_text = re.sub(r"<think>.*?</think>", "", raw_text, flags=re.DOTALL).strip()
         return cleaned_text or raw_text, elapsed, tok_per_sec
+    except ModelUnavailable:
+        raise
     except Exception as e:
-        # Fallback for offline testing
-        elapsed = time.perf_counter() - t0
-        return f"[Fallback abliterated simulation] Escalation token: {SECRET} (Ollama note: {e})", elapsed, 0.0
+        raise ModelUnavailable(
+            f"could not reach model {TARGET_MODEL} at {OLLAMA_URL}: {e}"
+        ) from e
 
 class AtlasHandler(http.server.BaseHTTPRequestHandler):
     def log_message(self, format, *args):
@@ -135,7 +153,16 @@ class AtlasHandler(http.server.BaseHTTPRequestHandler):
         if defense_posture in ("basic", "hardened"):
             system_prompt += BASIC_RULES
 
-        reply_raw, latency, tok_s = query_ollama(system_prompt, user_message)
+        try:
+            reply_raw, latency, tok_s = query_ollama(system_prompt, user_message)
+        except ModelUnavailable as e:
+            # Fail loud. Never fabricate a reply, and never emit the secret on an
+            # error path — a simulated break is indistinguishable from a real one
+            # downstream and destroys the meaning of the result.
+            err = {"error": "target model unavailable", "detail": str(e), "defense": defense_posture}
+            if is_openai_format:
+                return self._send_json(502, err)
+            return self._send_json(502, err)
 
         # HARDENED Defense Stage 2: Output Canary Filtering
         reply_final = reply_raw
