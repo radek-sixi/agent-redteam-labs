@@ -13,7 +13,11 @@ import time
 import urllib.request
 
 # Ensure laya_as_judge is accessible
-sys.path.insert(0, "/home/rado/dev/laya-as-judge")
+# Use an installed laya-as-judge (pip install -e .); or point LAYA_AS_JUDGE_PATH at a checkout.
+import os as _os
+_laya_path = _os.environ.get("LAYA_AS_JUDGE_PATH")
+if _laya_path:
+    sys.path.insert(0, _laya_path)
 try:
     from laya_as_judge import SafetyGuardJudge
     HAS_LAYA = True

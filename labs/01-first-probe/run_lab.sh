@@ -5,15 +5,14 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-BIN_PATH="${AGENT_PROBE_BIN:-/home/rado/dev/agent-probe/bin/agent-probe}"
-
-if [ ! -f "$BIN_PATH" ]; then
-    if command -v agent-probe >/dev/null 2>&1; then
-        BIN_PATH="$(command -v agent-probe)"
-    else
-        echo "[-] Error: agent-probe binary not found. Set AGENT_PROBE_BIN or install to PATH." >&2
-        exit 1
-    fi
+# Resolve the agent-probe binary: prefer one on PATH, then $AGENT_PROBE_BIN.
+if command -v agent-probe >/dev/null 2>&1; then
+    BIN_PATH="$(command -v agent-probe)"
+elif [ -n "${AGENT_PROBE_BIN:-}" ] && [ -x "$AGENT_PROBE_BIN" ]; then
+    BIN_PATH="$AGENT_PROBE_BIN"
+else
+    echo "[-] Error: agent-probe not found. Install it on your PATH or set AGENT_PROBE_BIN." >&2
+    exit 1
 fi
 
 echo "================================================================================"
