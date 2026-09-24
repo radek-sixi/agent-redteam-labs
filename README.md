@@ -218,3 +218,7 @@ Mutual Ecosystem Projects:
 ## 📄 License
 
 Licensed under the **Apache License, Version 2.0**. See [`LICENSE`](LICENSE) for details.
+
+---
+
+*Part of a broader AI-agent security R&D effort — reach an agent, attack it, judge the result, defend what it can touch. A larger, integrated toolkit is in the works. More in 2026.*
