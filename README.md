@@ -19,7 +19,7 @@ This curriculum integrates four dedicated open-source projects into a cohesive s
 ```mermaid
 graph TD
     subgraph OffensiveTools ["Offensive & Discovery Plane"]
-        Probe["<b>agent-probe</b><br/>Autonomous Security Scanner CLI<br/><i>(12 Automated Probes, SARIF, Multi-Format)</i><br/><a href='https://github.com/rbrus/agent-probe'>github.com/rbrus/agent-probe</a>"]
+        Probe["<b>sixi-scanner</b><br/>Autonomous Security Scanner CLI<br/><i>(27 Techniques, Multi-Turn Sequences, SARIF)</i><br/><a href='https://github.com/rbrus/sixi-scanner'>github.com/rbrus/sixi-scanner</a>"]
         Redwire["<b>redwire</b><br/>Multi-Transport Connector Library<br/><i>(REST, MCP JSON-RPC, A2A, WS, SSRF Pinning)</i><br/><a href='https://github.com/rbrus/redwire'>github.com/rbrus/redwire</a>"]
     end
 
@@ -37,8 +37,8 @@ graph TD
     Laya -->|Sub-1ms Verdicts| Probe
 ```
 
-1. **[`rbrus/agent-probe`](https://github.com/rbrus/agent-probe)**: An autonomous AI agent red-teaming CLI providing automated testing batteries (Prompt Injections, System Prompt Leaks, Guardrail Bypasses, Excessive Agency, Path Traversal).
-2. **[`rbrus/adk-demo-target`](https://github.com/rbrus/adk-demo-target)**: An enterprise customer support agent ("Atlas") built with Google's Agent Development Kit (ADK) demonstrating verifiable defense tiers (`none`, `basic`, `hardened`).
+1. **[`rbrus/sixi-scanner`](https://github.com/rbrus/sixi-scanner)** (supersedes the archived [`rbrus/agent-probe`](https://github.com/rbrus/agent-probe)): An autonomous AI agent red-teaming CLI providing 27 built-in techniques across single-turn and stateful multi-turn sequences (Prompt Injections, System Prompt Leaks, Confused Deputy, Refund Cap Splitting, Outbound Taint Relay, False Action Claims) with recitation filtering and trace-backed judging.
+2. **[`rbrus/adk-demo-target`](https://github.com/rbrus/adk-demo-target)**: An enterprise customer support agent ("Atlas") built with Google's Agent Development Kit (ADK) demonstrating verifiable defense tiers (`none`, `basic`, `hardened`) and 6 ground-truth session-state violation flags.
 3. **[`rbrus/redwire`](https://github.com/rbrus/redwire)**: A high-performance Go multi-transport library abstracting REST, Model Context Protocol (MCP), Agent-to-Agent (A2A), and WebSocket protocols behind a unified interface with dial-time SSRF pinning.
 4. **[`rbrus/laya-as-judge`](https://github.com/rbrus/laya-as-judge)**: A sub-450M parameter specialized SLM evaluation engine capable of rendering safety, compliance, and multi-turn tool trajectory verdicts in **under 1 millisecond**.
 
@@ -91,16 +91,16 @@ graph TB
 
 | # | Lab Directory | Focus Area | Primary Tools | Hardware Platform | Difficulty |
 | :-: | :--- | :--- | :--- | :--- | :-: |
-| **01** | [`01-first-probe`](labs/01-first-probe) | **Baseline Autonomous Probing** | `agent-probe` | Local / Any | 🟢 Beginner |
+| **01** | [`01-first-probe`](labs/01-first-probe) | **Baseline Autonomous Probing** | `sixi-scanner` | Local / Any | 🟢 Beginner |
 | **02** | [`02-multi-transport`](labs/02-multi-transport) | **Multi-Protocol & SSRF Defense** | `redwire` (REST, MCP, A2A) | Local / Go 1.22+ | 🟡 Intermediate |
 | **03** | [`03-judge-evaluation`](labs/03-judge-evaluation) | **Sub-1ms Autonomous Evaluation** | `laya-as-judge` (<450M SLM) | Jetson Thor / CPU | 🟡 Intermediate |
 | **04** | [`04-local-llm-target`](labs/04-local-llm-target) | **Local LLM Target Hardening** | Qwen3.6-35B Abliterated | NVIDIA Jetson Thor | 🟡 Intermediate |
 | **05** | [`05-local-attacker`](labs/05-local-attacker) | **Autonomous Adversarial Duel** | `gemma4:12b-it-qat` vs 35B | NVIDIA Jetson Thor | 🔴 Advanced |
-| **06** | [`06-tool-agency-abuse`](labs/06-tool-agency-abuse) | **Confused Deputy & Tool Hijacking (real ADK agent)** | Atlas ADK agent, session-state ground truth | ADK + Vertex AI | 🔴 Advanced |
-| **07** | [`07-cicd-sarif-gate`](labs/07-cicd-sarif-gate) | **CI/CD DevSecOps SARIF Gating** | `agent-probe`, SARIF v2.1.0 | GitHub Actions / CI | 🟡 Intermediate |
+| **06** | [`06-tool-agency-abuse`](labs/06-tool-agency-abuse) | **Confused Deputy & Parameter Induction (real ADK agent)** | Atlas ADK agent, session-state ground truth | ADK + Vertex AI | 🔴 Advanced |
+| **07** | [`07-cicd-sarif-gate`](labs/07-cicd-sarif-gate) | **CI/CD DevSecOps SARIF Gating** | `sixi-scanner`, SARIF v2.1.0 | GitHub Actions / CI | 🟡 Intermediate |
 | **08** | [`08-network-distributed`](labs/08-network-distributed) | **Distributed Network Red-Teaming** | PC (RTX 4060Ti+5060Ti) + Qwen3.8 | Workstation -> Thor LAN | 🔴 Advanced |
 | **09** | [`09-edge-to-edge`](labs/09-edge-to-edge) | **Tactical Low-Power Edge Probing** | Jetson Nano (qwen3:1.7b) | Jetson Nano -> Thor | 🔴 Advanced |
-| **10** | [`10-refusal-persistence`](labs/10-refusal-persistence) | **Refusal Persistence ("didn't accept no")** | Atlas ADK agent, multi-turn, session-state ground truth | ADK + Vertex AI | 🔴 Advanced |
+| **10** | [`10-refusal-persistence`](labs/10-refusal-persistence) | **Refusal Persistence, Cap Split & Taint Relay** | Atlas ADK agent, multi-turn, session-state ground truth | ADK + Vertex AI | 🔴 Advanced |
 
 ---
 
@@ -111,12 +111,12 @@ Read this before quoting a result to anyone.
 - **This is a teaching curriculum, not an assurance product.** It shows real failure modes and
   how to test for them. It does not certify that any agent is safe, and passing every lab does
   not mean an agent is secure.
-- **`agent-probe` is a fast baseline, not a coverage guarantee.** Its 12 built-in probes are
-  single-turn and heuristic. They map to the OWASP LLM Top 10 by category, but a "defended"
-  result means only that these specific probes did not elicit a signature — it is a smoke test
-  and a CI gate, not a penetration test. It uses a benign negative control and word-boundary
-  matching to cut false positives, but heuristic detection still produces both false positives
-  and false negatives; confirm findings by hand.
+- **`sixi-scanner` is a fast baseline, not a coverage guarantee.** Its 27 built-in techniques cover
+  both single-turn probes and stateful multi-turn sequences, mapping to the OWASP LLM Top 10. A
+  "0 findings" result means only that these specific techniques did not elicit a break — it is a
+  smoke test and a CI gate, not a penetration test. See [`agent-redteam-benchmark`](https://github.com/radek-sixi/agent-redteam-benchmark)
+  for measured precision (`0.821` single-turn, `1.000` multi-turn session lane) and recall (`0.571`)
+  numbers against ground-truth target oracles.
 - **Labs 06 and 10 need a real ADK agent and model credentials.** They drive the
   `adk-demo-target` agent and read its session state for ground truth. Without `google-adk` and
   Vertex AI credentials they abort with a non-zero exit code — by design, they never simulate a
@@ -171,14 +171,14 @@ cd agent-redteam-labs
 ### 3. Run the Entire Curriculum in One Shot
 
 ```bash
-# Run automated verification across all 9 labs
+# Run automated verification across all 10 labs
 make test
 ```
 
 ### 4. Run an Individual Lab
 
 ```bash
-# Run Lab 01: Baseline scan with agent-probe
+# Run Lab 01: Baseline scan with sixi-scanner
 make lab01
 
 # Run Lab 02: Multi-transport testing with redwire
@@ -208,7 +208,8 @@ Created and maintained by:
 GitHub: [@rbrus](https://github.com/rbrus)
 
 Mutual Ecosystem Projects:
-- [agent-probe](https://github.com/rbrus/agent-probe) — Autonomous AI agent security scanner CLI
+- [sixi-scanner](https://github.com/rbrus/sixi-scanner) — Autonomous AI agent security scanner CLI (supersedes [agent-probe](https://github.com/rbrus/agent-probe))
+- [agent-redteam-benchmark](https://github.com/radek-sixi/agent-redteam-benchmark) — Ground-truth precision & recall benchmark for AI agent red-team scanners
 - [adk-demo-target](https://github.com/rbrus/adk-demo-target) — Deliberately attackable banking agent on Google ADK
 - [redwire](https://github.com/rbrus/redwire) — Multi-transport agent connector (REST, MCP, A2A, WS)
 - [laya-as-judge](https://github.com/rbrus/laya-as-judge) — Sub-450M fast evaluation SLM judge engine

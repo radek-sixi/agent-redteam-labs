@@ -24,22 +24,22 @@ jobs:
           python3 app/agent.py &
           sleep 5
 
-      - name: Download & Install agent-probe
+      - name: Install sixi-scanner
         run: |
-          curl -sSL -o /usr/local/bin/agent-probe https://github.com/rbrus/agent-probe/releases/latest/download/agent-probe-linux-amd64
-          chmod +x /usr/local/bin/agent-probe
+          go install github.com/rbrus/sixi-scanner/cmd/sixi-scanner@latest
 
       - name: Execute Security Scan & Generate SARIF
         run: |
-          agent-probe scan \
-            --target http://127.0.0.1:8080/chat \
+          sixi-scanner scan \
+            --target chat \
+            --url http://127.0.0.1:8080/chat \
             --format sarif \
-            --output agent-security-results.sarif \
-            --fail-on critical
+            --out agent-security-results.sarif \
+            --min-severity critical
 
       - name: Upload SARIF Report to GitHub Advanced Security
         uses: github/codeql-action/upload-sarif@v3
         if: always()
         with:
           sarif_file: agent-security-results.sarif
-          category: agent-probe-scanner
+          category: sixi-scanner
