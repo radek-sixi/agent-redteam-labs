@@ -204,7 +204,7 @@ All tools, scripts, and attack vectors in this repository are designed exclusive
 Created and maintained by:
 
 **Radoslaw B.**  
-*Cloud & AI Architect — Secure Agentic AI & AI Red-Teaming*  
+*Senior Software Engineer & AI Architect — Secure Agentic AI & AI Red-Teaming*  
 GitHub: [@rbrus](https://github.com/rbrus)
 
 Mutual Ecosystem Projects:
