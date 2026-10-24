@@ -205,7 +205,7 @@ Created and maintained by:
 
 **Radoslaw B.**  
 *Senior Software Engineer & AI Architect — Secure Agentic AI & AI Red-Teaming*  
-GitHub: [@rbrus](https://github.com/rbrus)
+GitHub: [@radek-sixi](https://github.com/radek-sixi)
 
 Mutual Ecosystem Projects:
 - [sixi-scanner](https://github.com/rbrus/sixi-scanner) — Autonomous AI agent security scanner CLI (supersedes [agent-probe](https://github.com/rbrus/agent-probe))
