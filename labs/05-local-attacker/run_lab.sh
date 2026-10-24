@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Lab 05: Autonomous Adversarial Loop on Jetson Thor
-# Copyright 2026 Radoslaw Brus. SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Radoslaw B. SPDX-License-Identifier: Apache-2.0
 
 set -euo pipefail
 

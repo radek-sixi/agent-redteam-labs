@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Lab 04: Atlas Local Target Server on NVIDIA Jetson Thor
 # Defender Model: ttempvnn/Huihui-Qwen3.6-35B-A3B-abliterated-Q4-K-M:latest
-# Copyright 2026 Radoslaw Brus. SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Radoslaw B. SPDX-License-Identifier: Apache-2.0
 
 import http.server
 import json

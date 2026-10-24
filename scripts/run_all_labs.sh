@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Master Automated Test Suite & Benchmark Runner for Agent Red-Team Labs
-# Copyright 2026 Radoslaw Brus. SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Radoslaw B. SPDX-License-Identifier: Apache-2.0
 
 set -uo pipefail
 

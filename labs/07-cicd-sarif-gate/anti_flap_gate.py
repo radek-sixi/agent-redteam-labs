@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Lab 07: Statistical Anti-Flapping CI/CD Security Gate
 # Separates True Model Regressions from Stochastic Sampling Noise
-# Copyright 2026 Radoslaw Brus. SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Radoslaw B. SPDX-License-Identifier: Apache-2.0
 
 import hashlib
 import json

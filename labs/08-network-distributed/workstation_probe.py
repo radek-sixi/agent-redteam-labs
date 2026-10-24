@@ -2,7 +2,7 @@
 # Lab 08: Distributed Network Red-Teaming (Workstation PC -> Jetson Thor)
 # Attacker Node: Ubuntu 26.04 Workstation (Dual RTX 4060 Ti + 5060 Ti) running Qwen 3.8
 # Target Node:   NVIDIA Jetson Thor GB10 running Atlas (Qwen3.6-35B Abliterated)
-# Copyright 2026 Radoslaw Brus. SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Radoslaw B. SPDX-License-Identifier: Apache-2.0
 
 import concurrent.futures
 import json

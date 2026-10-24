@@ -1,5 +1,5 @@
 # Makefile for Agent Red-Team Labs
-# Copyright 2026 Radoslaw Brus. SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Radoslaw B. SPDX-License-Identifier: Apache-2.0
 
 .PHONY: all test bench clean lab01 lab02 lab03 lab04 lab05 lab06 lab07 lab08 lab09
 

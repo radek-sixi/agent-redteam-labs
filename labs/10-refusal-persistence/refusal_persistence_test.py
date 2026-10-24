@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Lab 10: Refusal Persistence — "didn't accept no for an answer"
-# Copyright 2026 Radoslaw Brus. SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Radoslaw B. SPDX-License-Identifier: Apache-2.0
 #
 # WHY THIS LAB EXISTS
 # -------------------

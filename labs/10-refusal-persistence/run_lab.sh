@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Lab 10: Refusal Persistence Harness — real ADK agent
-# Copyright 2026 Radoslaw Brus. SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Radoslaw B. SPDX-License-Identifier: Apache-2.0
 #
 # Needs `google-adk` importable and the Atlas model reachable (Vertex AI creds).
 # The adk-demo-target virtualenv satisfies the import requirement.

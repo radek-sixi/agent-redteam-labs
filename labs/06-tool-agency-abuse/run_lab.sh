@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Lab 06: Tool Agency Abuse Harness — real ADK agent
-# Copyright 2026 Radoslaw Brus. SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Radoslaw B. SPDX-License-Identifier: Apache-2.0
 #
 # This lab drives the real Atlas agent from the adk-demo-target repo and reads
 # its session state for ground truth. It needs `google-adk` importable and the

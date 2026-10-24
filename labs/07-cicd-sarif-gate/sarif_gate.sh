@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Lab 07: CI/CD Security Gating & SARIF Generation
-# Copyright 2026 Radoslaw Brus. SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Radoslaw B. SPDX-License-Identifier: Apache-2.0
 
 set -euo pipefail
 

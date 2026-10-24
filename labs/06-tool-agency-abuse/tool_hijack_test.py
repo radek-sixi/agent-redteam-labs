@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Lab 06: Excessive Agency & Tool Hijacking — against a REAL ADK agent
-# Copyright 2026 Radoslaw Brus. SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Radoslaw B. SPDX-License-Identifier: Apache-2.0
 #
 # WHAT CHANGED AND WHY
 # --------------------

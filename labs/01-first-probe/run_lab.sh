@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Lab 01: Baseline Security Testing with sixi-scanner
-# Copyright 2026 Radoslaw Brus. SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Radoslaw B. SPDX-License-Identifier: Apache-2.0
 
 set -euo pipefail
 

@@ -3,7 +3,7 @@
 # Attacker Model: gemma4:12b-it-qat
 # Defender Model: ttempvnn/Huihui-Qwen3.6-35B-A3B-abliterated-Q4-K-M:latest
 # Evaluator:      laya-as-judge (SLM)
-# Copyright 2026 Radoslaw Brus. SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Radoslaw B. SPDX-License-Identifier: Apache-2.0
 
 import json
 import os

@@ -2,7 +2,7 @@
 # Lab 09: Edge-to-Edge Tactical Red-Teaming (NVIDIA Jetson Nano Super -> Jetson Thor)
 # Attacker Node: NVIDIA Jetson Nano Super (5W-10W TDP) running qwen3:1.7b (Quantized Q4_K_M)
 # Target Node:   NVIDIA Jetson Thor GB10 running Atlas (Qwen3.6-35B Abliterated)
-# Copyright 2026 Radoslaw Brus. SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Radoslaw B. SPDX-License-Identifier: Apache-2.0
 
 import json
 import os

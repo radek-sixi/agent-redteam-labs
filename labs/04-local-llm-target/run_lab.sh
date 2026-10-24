@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Lab 04: Local LLM Target Hardening on Jetson Thor
-# Copyright 2026 Radoslaw Brus. SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Radoslaw B. SPDX-License-Identifier: Apache-2.0
 
 set -euo pipefail
 
